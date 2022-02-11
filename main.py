@@ -24,7 +24,7 @@ Send a YouTube URL to get started.
 
 START_BTN = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton('Source Code', url='https://github.com/samadii/WebDownloaderBot'),
+        InlineKeyboardButton('Source Code', url='https://github.com/Soebb/own-utube-stream-link-gen'),
         ]]
     )
 
