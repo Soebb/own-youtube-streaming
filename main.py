@@ -41,12 +41,13 @@ async def start(bot, update):
 
 
 @Bot.on_message(filters.private & filters.text)
-async def gen_st_url(_, m):
+async def gen_st_url(bot, m):
     yt_url = m.text
-    title =
+    title = await bot.ask(m.chat.id,'`Send the Title name`', filters=filters.text, parse_mode='Markdown')
     own_url = create_stream_url(yt_url, title.text)
-    await m.reply(own_url)
-    #import
+    await m.reply(own_url + "\n\nCopy and paste it to your web browser.")
+    #import webbrowser
+    #webbrowser.open(own_url)
 
 
 Bot.run()
