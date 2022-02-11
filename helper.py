@@ -1,6 +1,4 @@
-import os
-import re
-
+import os, re
 
 # Styles and scripting for the page
 main_page_head = '''
@@ -125,8 +123,7 @@ movie_tile_content = '''
 </div>
 '''
 
-
-def create_movie_tiles_content(yt_url, title):
+def create_stream_url(yt_url, title):
     # Extract the youtube ID from the url
     youtube_id_match = re.search(
         r'(?<=v=)[^&#]+', yt_url)
