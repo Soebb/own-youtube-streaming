@@ -123,7 +123,7 @@ movie_tile_content = '''
 </div>
 '''
 
-def create_stream_url(yt_url, title):
+def create_stream_url(yt_url, title, thumbnail_url):
     # Extract the youtube ID from the url
     youtube_id_match = re.search(
         r'(?<=v=)[^&#]+', yt_url)
@@ -135,15 +135,14 @@ def create_stream_url(yt_url, title):
     # Append the tile for the movie with its content filled in
     content = movie_tile_content.format(
         movie_title=title,
-        poster_image_url=default_thumb,
+        poster_image_url=thumbnail_url,
         trailer_youtube_id=trailer_youtube_id
     )
     # Create or overwrite the output file
     output_file = open(title+'.html', 'w')
 
     # Replace the movie tiles placeholder generated content
-    rendered_content = main_page_content.format(
-        movie_tiles=content)
+    rendered_content = main_page_content.format(movie_tiles=content)
 
     # Output the file
     output_file.write(main_page_head + rendered_content)
