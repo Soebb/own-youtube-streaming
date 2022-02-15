@@ -7,6 +7,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 API_ID = os.environ.get("API_ID")
 API_HASH = os.environ.get("API_HASH")
+default_thumb = "https://github.com/Soebb/own-utube-stream-link-gen/raw/main/default_thumbnail.jpg"
 
 Bot = Client(
     "Own-ST-Bot",
@@ -44,10 +45,11 @@ async def start(bot, update):
 async def gen_st_url(bot, m):
     yt_url = m.text
     title = await bot.ask(m.chat.id,'`Send the Title name`', filters=filters.text, parse_mode='Markdown')
-    own_url = create_stream_url(yt_url, title.text)
-    await m.reply(own_url + "\n\nCopy and paste it to your web browser.")
+    thumbnail = default_thumb
+    own_stream_url = create_stream_url(yt_url, title.text, thumbnail)
+    await m.reply(own_stream_url + "\n\nCopy and paste it to your web browser.")
     #import webbrowser
-    #webbrowser.open(own_url)
+    #webbrowser.open(own_stream_url)
 
 
 Bot.run()
