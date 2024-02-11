@@ -44,7 +44,7 @@ async def start(bot, update):
 @Bot.on_message(filters.private & filters.text)
 async def gen_st_url(bot, m):
     yt_url = m.text
-    title = await bot.ask(m.chat.id,'`Send the Title name`', filters=filters.text, parse_mode='Markdown')
+    title = await bot.ask(m.chat.id,'`Send the Title name`', filters=filters.text)
     thumbnail = default_thumb
     own_stream_url = create_stream_url(yt_url, title.text, thumbnail)
     await m.reply(own_stream_url + "\n\nCopy and paste it to your web browser.")
